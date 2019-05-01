@@ -33,18 +33,19 @@ from sklearn.linear_model import LogisticRegression
 model = LogisticRegression(class_weight='balanced', solver='liblinear', penalty ='l1', C= 0.1, max_iter=10000)
 model.fit(x_train,y_train)
 
-data_test = pd.read_csv('test.csv')
+data_test = pd.read_csv('./data/test.csv')
 
 
 x_test = data_test.iloc[:, 1:]
-x_test_pca = pca_model.transform(x_test)
 
 x_test = pd.DataFrame(scaler.transform(x_test))
-predictions = pd.DataFrame( model.predict(x_test_pca) )
+predictions = pd.DataFrame( model.predict(x_test) )
 
 p = predictions
 
 p = p.set_index(pd.Index(data_test.id.values))
 
-p.to_csv('LogPCA1.csv')
+p.iloc[:,1] = p.iloc[:,1].rename_axis('target')
+
+p.to_csv('./predictions/Log1.csv')
 

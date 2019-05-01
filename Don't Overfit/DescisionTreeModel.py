@@ -27,12 +27,21 @@ from sklearn import tree
 model = tree.DecisionTreeClassifier(max_depth=10)
 model.fit(X,y)
 
-(imp_features) = np.where((np.array(model.feature_importances_) > 0.05) == True)
+(imp_features) = np.where((np.array(model.feature_importances_) > 0.05))
 
-
+imp_features[0]
 
 
 x_train = X.iloc[:, imp_features[0]]
+
+xcorr = train_data.iloc[:, np.append(imp_features[0], [2])].corr()
+g = sns.heatmap(xcorr)
+
+model = tree.DecisionTreeClassifier(max_depth=10)
+model.fit(x_train,y)
+
+(imp_features) = np.where((np.array(model.feature_importances_) > 0.05) == True)
+
 
 model = tree.DecisionTreeClassifier(max_depth=5)
 model.fit(x_train,y)

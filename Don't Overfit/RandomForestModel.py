@@ -16,7 +16,7 @@ x = data.iloc[:, 2:]
 
 from sklearn.ensemble import RandomForestClassifier
 
-model =  RandomForestClassifier(n_estimators=50, max_leaf_nodes=2, random_state=0)
+model =  RandomForestClassifier(n_estimators=50,random_state=0)
 model.fit(x, y)
 
 #get the test data
