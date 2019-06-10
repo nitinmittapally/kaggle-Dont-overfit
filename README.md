@@ -1,3 +1,3 @@
-# kaggale
+# kaggle
 
 Kaggle Competitions Code repo
