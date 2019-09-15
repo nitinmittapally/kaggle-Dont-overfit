@@ -8,7 +8,11 @@ Created on Tue Apr 30 15:22:28 2019
 import pandas as pd
 
 train_file_path = './data/train.csv'
+sub_file_path = './data/sample_submission.csv'
 data = pd.read_csv(train_file_path)
+sub = pd.read_csv(sub_file_path)
+
+sub['target'] = data_test[str(33)]
 
 x_train = data.iloc[:, 2:]
 y_train = data.target
